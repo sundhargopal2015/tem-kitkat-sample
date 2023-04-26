@@ -4,9 +4,8 @@ import "./Counter.css";
 
 function Counter() {
   const [count, setCount] = useState(0);
-
   return (
-    <div class="container">
+    <div className="container">
       <button onClick={() => setCount((pre) => pre - 1)}>-</button>
       <span>{count}</span>
       <button onClick={() => setCount((pre) => pre + 1)}>+</button>
