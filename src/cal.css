@@ -1,0 +1,26 @@
+body {
+
+    background-color:hsl(152.18deg 68.75% 31.37% / 86%);
+    color: white;
+    padding: 40px;
+    font-family: Arial;
+    font-size: 14px;
+   
+  }
+  
+
+.container{
+    background-color: rgb(237, 245, 247);
+}
+.no-people.error{
+ border-color: red;
+ box-shadow: 0 0 0 0.25rem rgb(253 68 13 / 25%);
+}
+.fo{
+  float:right;
+}
+.btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active {
+  
+  background-color: #719785 !important;
+  border-color: #778f84!important;
+}
