@@ -1,0 +1,11 @@
+.todo-input {
+    border: 2px solid black;
+    padding: 5px;
+}
+.todo-input.error {
+    border: 2px solid red;
+}
+.todo-input.error:focus-visible {
+    border: none;
+    outline: 2px solid red;
+}
