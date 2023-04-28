@@ -99,7 +99,6 @@ const ToDoList = (props) => {
           {todoEmptyError && (
             <span style={styles.error}>Todo can not be empty</span>
           )}
-          {/* <input type="text" style={{border: `2px solid ${todoEmptyError ? "red" : "black"}`}} value={toDo} onChange={handleToDoChange} /> */}
           <input
             type="text"
             className={`todo-input ${todoEmptyError ? "error" : ""}`}
