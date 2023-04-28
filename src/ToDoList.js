@@ -16,17 +16,18 @@ const styles = {
 };
 
 const ToDoList = (props) => {
-  const [toDo, setToDo] = useState("");
+  const [toDoInput, setToDoInput] = useState("");
   const [toDoList, setToDoList] = useState([]);
   const [listSpaceError, setListSpaceError] = useState(false);
   const [todoEmptyError, setTodoEmptyError] = useState(false);
+  const [showCompletedTodoList, setShowCompletedTodoList] = useState(false);
 
   const handleToDoChange = (event) => {
-    setToDo(event.target.value);
+    setToDoInput(event.target.value);
   };
 
   const handleAddTDo = () => {
-    if (!toDo) {
+    if (!toDoInput) {
       setTodoEmptyError(true);
     } else {
       setTodoEmptyError(false);
@@ -34,17 +35,54 @@ const ToDoList = (props) => {
         setListSpaceError(true);
         return;
       }
+      const toDo = {
+        id: toDoList.length,
+        title: toDoInput,
+        isChecked: false,
+      };
       setToDoList((pre) => [...pre, toDo]);
-      setToDo("");
+      setToDoInput("");
     }
   };
 
   const handleRemoveTodo = (event) => {
-    const filterTodo = toDoList.filter(
-      (todo, index) => event.target.id !== index
-    );
-    console.log(filterTodo);
+    const filterTodo = [];
+
+    toDoList.forEach((todo, index) => {
+      if (parseInt(event.target.id) !== index) {
+        if (todo.id > parseInt(event.target.id)) {
+          filterTodo.push({
+            id: todo.id - 1,
+            title: todo.title,
+            isChecked: todo.isChecked,
+          });
+        } else {
+          filterTodo.push(todo);
+        }
+      }
+    });
+
     setToDoList(filterTodo);
+  };
+
+  const handleReset = () => {
+    setToDoList([]);
+  };
+
+  const handleTodoCheck = (event) => {
+    setToDoList((pre) =>
+      pre.map((todo, index) => {
+        if (parseInt(event.target.id) === index) {
+          return {
+            id: todo.id,
+            title: todo.title,
+            isChecked: !todo.isChecked,
+          };
+        } else {
+          return todo;
+        }
+      })
+    );
   };
 
   return (
@@ -65,7 +103,7 @@ const ToDoList = (props) => {
           <input
             type="text"
             className={`todo-input ${todoEmptyError ? "error" : ""}`}
-            value={toDo}
+            value={toDoInput}
             onChange={handleToDoChange}
           />
           <button
@@ -80,13 +118,51 @@ const ToDoList = (props) => {
           >
             Add To Do List
           </button>
+          {showCompletedTodoList && (
+            <div className="comp-list-cont">
+              <ul>
+                {toDoList
+                  .filter((todo) => todo.isChecked)
+                  .map((todo) => (
+                    <li>{todo.title}</li>
+                  ))}
+              </ul>
+            </div>
+          )}
         </section>
         <section>
           <ul>
-            {<List todoList={toDoList} onRemoveTodo={handleRemoveTodo} />}
+            {
+              <List
+                todoList={toDoList}
+                onRemoveTodo={handleRemoveTodo}
+                onCheckToDo={handleTodoCheck}
+              />
+            }
           </ul>
           {listSpaceError && (
             <div style={styles.error}>There is no space in the todo list</div>
+          )}
+          {toDoList.length > 0 && (
+            <div>
+              {toDoList.filter((todo) => todo.isChecked).length > 0 && (
+                <button onClick={() => setShowCompletedTodoList((pre) => !pre)}>
+                  {showCompletedTodoList ? "Hide list" : "show list"}
+                </button>
+              )}
+              <button
+                style={{
+                  background: "orange",
+                  padding: "5px",
+                  color: "white",
+                  outline: "none",
+                  border: "1px solid black",
+                }}
+                onClick={handleReset}
+              >
+                Reset
+              </button>
+            </div>
           )}
         </section>
       </div>
