@@ -1,0 +1,17 @@
+.list-container {
+    margin: 30px;
+    height: 80vh;
+}
+.items {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    margin-bottom: 20px;
+}
+
+.item-image {
+    height: 75px;
+    width: 75px;
+    background-color: cadetblue;
+}
