@@ -1,0 +1,4 @@
+.input-ref.fn:focus-visible,
+.input-ref.class:focus-visible {
+    outline: 3px solid green;
+}
