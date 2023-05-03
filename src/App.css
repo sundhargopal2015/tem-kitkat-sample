@@ -1,0 +1,31 @@
+body {
+    margin: 20px;
+}
+.container-light,.container-dark {
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 20px;
+    color: black;
+    margin-bottom: 20px;
+    background-color: white;
+}
+
+.container-dark {
+    background-color: black;
+    border: 1px solid white;
+    color: white;
+}
+
+.button-light,.button-dark {
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 10px;
+    color: black;
+    background-color: white;
+    margin-right: 10px;
+}
+.button-dark {
+    background-color: black;
+    border: 1px solid white;
+    color: white;
+}
