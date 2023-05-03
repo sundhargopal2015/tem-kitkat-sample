@@ -1,31 +1,35 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import "./App.css";
+
+import { ThemeContext } from "./AppContext";
 
 const Theme = () => {
     const [theme, setTheme] = useState("light");
 
     return (
-        <div>
-            <Form theme={theme} />
+        <ThemeContext.Provider value={theme}>
+            <Form />
             <label>
                 <input type="checkbox" onChange={() => setTheme(theme === "light" ? "dark" : "light")} />
                 Use dark theme
             </label>
-        </div>
+        </ThemeContext.Provider>
     )
 }
 
-const Form = ({ theme }) => {
+const Form = () => {
     return (
-        <Panel theme={theme}>
+        <Panel>
             <h1>Welcome</h1>
-            <Button theme={theme}>Sign up</Button>
-            <Button theme={theme}>Log in</Button>
+            <Button>Sign up</Button>
+            <Button>Log in</Button>
         </Panel>
     )
 }
 
-const Panel = ({ theme, children }) => {
+const Panel = ({ children }) => {
+    const theme = useContext(ThemeContext);
+
     return (
         <section className={`container-${theme}`}>
             {children}
@@ -33,9 +37,10 @@ const Panel = ({ theme, children }) => {
     )
 }
 
-const Button = ({ theme, children }) => {
+const Button = ({ children }) => {
+
     return (
-        <button className={`button-${theme}`}>{children}</button>
+        <ThemeContext.Consumer>{(value) => <button className={`button-${value}`}>{children}</button>}</ThemeContext.Consumer>
     )
 }
 
