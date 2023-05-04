@@ -10,7 +10,7 @@ const Theme = () => {
         <ThemeContext.Provider value={theme}>
             <Form />
             <label>
-                <input type="checkbox" onChange={() => setTheme(theme === "light" ? "dark" : "light")} />
+                <input type="checkbox" onChange={(event) => setTheme(event.target.checked ? "dark" : "light")} />
                 Use dark theme
             </label>
         </ThemeContext.Provider>
