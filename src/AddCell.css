@@ -1,0 +1,37 @@
+.cell-container {
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.cell-card {
+  background-color: black;
+  height: 150px;
+  width: 150px;
+  border: 2px solid white;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cell-card input {
+  background-color: black;
+  outline: 1px dashed white;
+  color: white;
+  width: 70px;
+}
+.cells-values {
+  color: white;
+  margin-left: 20px;
+}
+.add-space {
+  width: 10px;
+  line-height: 100px;
+}
+.add-space:hover {
+  background-color: green;
+  width: 10px;
+  cursor: pointer;
+  height: 140px;
+}

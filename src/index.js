@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import AddCell from './AddCell';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <h1>Hello React</h1>
+    <AddCell />
   </React.StrictMode>
 );
