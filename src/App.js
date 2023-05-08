@@ -1,15 +1,19 @@
 import React from "react";
 import { Container } from "react-bootstrap";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import NavbarComponent from "./components/Navbar";
 import Store from "./pages/store";
-
+import CartProvider from "./CartProvider";
 
 const App = () => {
-    return (<Container>
+  return (
+    <CartProvider>
+      <Container>
         <NavbarComponent />
         <Store />
-    </Container>)
-}
+      </Container>
+    </CartProvider>
+  );
+};
 
 export default App;
