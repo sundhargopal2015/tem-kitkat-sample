@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Button, Modal, Navbar } from "react-bootstrap";
 import { CartContext } from "../CartProvider";
-import { CoinRupee } from "tabler-icons-react";
+import { CurrencyRupee } from "tabler-icons-react";
 import { getProduct } from "../Products";
 
 const NavbarComponent = () => {
@@ -45,7 +45,7 @@ const NavbarComponent = () => {
                 <h3>{getProduct(item.id).name}</h3>
                 <p>{cartContext.getProductQuantity(item.id)} total</p>
                 <p>
-                  <CoinRupee />
+                  <CurrencyRupee />
                   {getProduct(item.id).price *
                     cartContext.getProductQuantity(item.id)}
                 </p>
@@ -61,7 +61,7 @@ const NavbarComponent = () => {
           {!!cartProductCount && (
             <>
               <h1>
-                Total: <CoinRupee /> {cartContext.getTotalCost()}
+                Total: <CurrencyRupee height={45} width={45}/> {cartContext.getTotalCost()}
               </h1>
               <Button variant="success" onClick={handlePurchase}>
                 Purchase items!

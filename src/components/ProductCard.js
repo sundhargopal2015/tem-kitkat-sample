@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { Button, Card, Col, Row } from "react-bootstrap";
-import { CoinRupee } from "tabler-icons-react";
+import { Button, Card, Col, Form, Row } from "react-bootstrap";
+import { CurrencyRupee } from "tabler-icons-react";
 import { CartContext } from "../CartProvider";
 
 const ProductCard = ({ product }) => {
@@ -17,27 +17,26 @@ const ProductCard = ({ product }) => {
       <Card.Body>
         <Card.Title>{product.name}</Card.Title>
         <Card.Text>
-          <CoinRupee />
+          <CurrencyRupee />
           {product.price}
         </Card.Text>
         {quantity && quantity > 0 ? (
           <>
-            <Row>
-              <Col>In cart: {quantity}</Col>
-              <Col>
-                <Button onClick={() => cartContext.addToOneCart(product.id)}>
+            <Form as={Row}>
+              <Form.Label column="true" sm={6}>In cart: {quantity}</Form.Label>
+              <Col sm={6}>
+                <Button sm={6} className="mx-2" onClick={() => cartContext.addToOneCart(product.id)}>
                   +
                 </Button>
-              </Col>
-              <Col>
-                <Button onClick={() => cartContext.removeOneToCart(product.id)}>
+                <Button sm={6} className="mx-2" onClick={() => cartContext.removeOneToCart(product.id)}>
                   -
                 </Button>
               </Col>
-            </Row>
+            </Form>
             <Button
               variant="danger"
               onClick={() => cartContext.removeFromCart(product.id)}
+              className="my-2"
             >
               Remove from cart
             </Button>
