@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/tem-kitkat-sample/static/css/main.c2cab247.css",
+    "main.js": "/tem-kitkat-sample/static/js/main.9980e228.js",
+    "index.html": "/tem-kitkat-sample/index.html",
+    "main.c2cab247.css.map": "/tem-kitkat-sample/static/css/main.c2cab247.css.map",
+    "main.9980e228.js.map": "/tem-kitkat-sample/static/js/main.9980e228.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c2cab247.css",
+    "static/js/main.9980e228.js"
+  ]
+}
