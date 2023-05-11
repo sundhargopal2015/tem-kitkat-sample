@@ -1,18 +1,20 @@
 import React from "react";
-import { Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import NavbarComponent from "./components/Navbar";
-import Store from "./pages/store";
 import CartProvider from "./CartProvider";
+import ErrorBoundary from "./ErrorBoundary";
+import { Home } from "tabler-icons-react";
+import { Container } from "react-bootstrap";
+import Router from "./Router";
 
 const App = () => {
   return (
-    <CartProvider>
-      <Container>
-        <NavbarComponent />
-        <Store />
-      </Container>
-    </CartProvider>
+    <ErrorBoundary>
+      <CartProvider>
+        <Container>
+          <Router />
+        </Container>
+      </CartProvider>
+    </ErrorBoundary>
   );
 };
 

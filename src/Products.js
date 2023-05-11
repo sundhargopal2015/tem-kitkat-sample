@@ -31,8 +31,6 @@ const Products = [
   },
 ];
 
-export const getProduct = (id) => {
-  return Products.find((product) => product.id === id);
-};
+export const getProduct = (id) => Products.find((product) => product.id === id);
 
 export { Products };

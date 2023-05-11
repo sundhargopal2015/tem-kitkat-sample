@@ -4,38 +4,50 @@ import { CurrencyRupee } from "tabler-icons-react";
 import { CartContext } from "../CartProvider";
 
 const ProductCard = ({ product }) => {
-  const cartContext = useContext(CartContext);
+  const { id, name, price } = product;
+  const { addToOneCart, removeOneToCart, removeFromCart, getProductQuantity } =
+    useContext(CartContext);
 
-  const quantity = cartContext.getProductQuantity(product.id);
+  const quantity = getProductQuantity(id);
 
   const handleAddToCart = () => {
-    cartContext.addToOneCart(product.id);
+    addToOneCart(id);
   };
 
   return (
     <Card>
       <Card.Body>
-        <Card.Title>{product.name}</Card.Title>
+        <Card.Title>{name}</Card.Title>
         <Card.Text>
           <CurrencyRupee />
-          {product.price}
+          {price}
         </Card.Text>
         {quantity && quantity > 0 ? (
           <>
             <Form as={Row}>
-              <Form.Label column="true" sm={6}>In cart: {quantity}</Form.Label>
+              <Form.Label column="true" sm={6}>
+                In cart: {quantity}
+              </Form.Label>
               <Col sm={6}>
-                <Button sm={6} className="mx-2" onClick={() => cartContext.addToOneCart(product.id)}>
+                <Button
+                  sm={6}
+                  className="mx-2"
+                  onClick={() => addToOneCart(id)}
+                >
                   +
                 </Button>
-                <Button sm={6} className="mx-2" onClick={() => cartContext.removeOneToCart(product.id)}>
+                <Button
+                  sm={6}
+                  className="mx-2"
+                  onClick={() => removeOneToCart(id)}
+                >
                   -
                 </Button>
               </Col>
             </Form>
             <Button
               variant="danger"
-              onClick={() => cartContext.removeFromCart(product.id)}
+              onClick={() => removeFromCart(id)}
               className="my-2"
             >
               Remove from cart
