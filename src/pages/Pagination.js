@@ -95,7 +95,7 @@ const Pagination = () => {
                 key={val + "$"}
               >{`${val}`}</span>
 
-              <span class="mx-1">{`${index !== pages.length-1 ? "|" : ""}`}</span> 
+              <span class="mx-1">{`${index !== pages.length-1 ? "|" : ""}`} </span> 
             </>
           ))}
        </div>
